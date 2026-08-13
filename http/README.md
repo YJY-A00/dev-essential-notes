@@ -91,13 +91,14 @@ HTTP 是“无状态”的——每次请求都是独立的，服务器记不住
 ![](2026-08-13-15-00-13.png)
 # 实操3 创建post请求
 1. ![](2026-08-13-16-45-26.png)
-字段	        你看到的值                                           含义
-请求网址	https://jsonplaceholder.typicode.com/posts	 你发的地址，告诉服务器在哪个房间存东西
-请求方法	POST	                                       你明确说要“新增”数据
-状态代码	201 Created	                                 服务器说：“存好了，新的资源已创建”
-Location	https://jsonplaceholder.typicode.com/posts/101	服务器告诉你新资源的具体地址（相当于告诉你“你的新书放在第101号书架”）
-Content-Type	application/json; charset=utf-8	         服务器返回的是 JSON 格式数据
-Server	cloudflare	                                   服务器用了 Cloudflare 代理（说明是真实生产环境）
+| 字段 | 你看到的值 | 含义 |
+|------|-----------|------|
+| 请求网址 | `https://jsonplaceholder.typicode.com/posts` | 你发的地址，告诉服务器在哪个房间存东西 |
+| 请求方法 | `POST` | 你明确说要“新增”数据 |
+| 状态代码 | `201 Created` | 服务器说：“存好了，新的资源已创建” |
+| `Location` | `https://jsonplaceholder.typicode.com/posts/101` | 服务器告诉你新资源的具体地址（相当于告诉你“你的新书放在第101号书架”） |
+| `Content-Type` | `application/json; charset=utf-8` | 服务器返回的是 JSON 格式数据 |
+| `Server` | `cloudflare` | 服务器用了 Cloudflare 代理（说明是真实生产环境） |
 核心学习点：
 201 是 POST 成功时的专属状态码。
 Location 响应头是 RESTful 规范里推荐的做法——返回新资源的 URI。
