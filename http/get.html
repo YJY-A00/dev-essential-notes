@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTTP 测试</title>
+</head>
+<body>
+    <h1>HTTP 请求测试</h1>
+    <p>按 F12 打开开发者工具 → 点击"网络"标签 → 然后点击下面的按钮</p>
+    <button onclick="sendRequest()">点我发送 HTTP 请求</button>
+
+    <script>
+        function sendRequest() {
+            fetch('https://jsonplaceholder.typicode.com/posts/1')
+                .then(response => response.json())
+                .then(data => {
+                    alert('请求成功！服务器返回了：' + data.title);
+                })
+                .catch(error => {
+                    alert('请求失败：' + error);
+                });
+        }
+    </script>
+</body>
+</html>
