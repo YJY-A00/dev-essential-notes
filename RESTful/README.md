@@ -161,4 +161,71 @@
 
 **RESTful 的核心就是用 URL 表示“什么东西”（名词），用 HTTP 方法表示“怎么做”（动词）。** URL 里永远不出现动词。
 
-记住这条，你就已经掌握了 RESTful 的精髓。
+## 11. API 版本管理
+
+当接口需要升级且不兼容旧版本时，通过版本号区分。
+
+| 方式 | 示例 | 说明 |
+|------|------|------|
+| URL 路径 | `/api/v1/users` → `/api/v2/users` | 最直观，推荐 |
+| 查询参数 | `/users?version=1` | 不够清晰 |
+| 请求头 | `Accept-Version: v2` | 隐蔽，不常用 |
+
+**推荐做法**：在 URL 中显式标注版本号，如 `/api/v1/users` 和 `/api/v2/users` 并存，逐步淘汰旧版本。
+
+---
+
+## 12. 常见的“非 RESTful”但合理的接口
+
+不是所有接口都必须严格遵循 RESTful，以下场景例外：
+
+| 场景 | 接口示例 | 原因 |
+|------|----------|------|
+| 登录 | `POST /auth/login` | 不是资源操作，是动作 |
+| 登出 | `POST /auth/logout` | 不是资源操作，是动作 |
+| 刷新 Token | `POST /auth/refresh` | 不是资源操作 |
+| 文件上传 | `POST /upload` | 文件本身不是 RESTful 资源 |
+| 搜索 | `GET /search?q=keyword` | 跨资源搜索 |
+| 统计 | `GET /stats/dashboard` | 计算类接口 |
+
+**原则**：RESTful 是规范，不是法律。当它让接口变得别扭时，可以灵活变通。
+
+---
+
+## 13. RESTful 接口响应格式建议
+
+一个好的 API 应该有统一的响应格式，便于前端处理。
+
+### 成功响应
+```json
+{
+    "code": 0,
+    "message": "success",
+    "data": {
+        "id": 1,
+        "name": "张三"
+    }
+}
+
+{
+    "code": 0,
+    "message": "success",
+    "data": {
+        "items": [
+            { "id": 1, "name": "张三" },
+            { "id": 2, "name": "李四" }
+        ],
+        "pagination": {
+            "page": 1,
+            "size": 10,
+            "total": 100,
+            "totalPages": 10
+        }
+    }
+}
+### 失败响应
+{
+    "code": 40001,
+    "message": "用户邮箱格式不正确",
+    "timestamp": "2026-08-14T10:00:00Z"
+}
