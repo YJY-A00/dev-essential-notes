@@ -54,6 +54,14 @@
 
 具体监听端口、目录位置、Nginx 配置和服务管理方式以实际服务器配置及后续部署文档为准。
 
+## 文档导航
+
+- [网站部署实践总览](./website-deployment/README.md)
+- [第一次部署复盘：暑假初版网站](./website-deployment/01-first-deployment-review.md)
+- [第二次部署记录：开学后重新搭建](./website-deployment/02-second-deployment-record.md)
+- [网站部署故障排查记录](./website-deployment/03-troubleshooting.md)
+- [网站架构与部署验证说明](./website-deployment/04-architecture-and-deployment.md)
+
 ## 两次部署实践
 
 ### 第一次：暑假初版网站
